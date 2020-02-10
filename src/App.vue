@@ -1,30 +1,50 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>|
-      <router-link to="/tryOne">TryOne</router-link>
-    </div>
+  <div id="app"
+       class="container">
+    <Nav v-if="isShowNav"></Nav>
     <router-view />
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script lang="ts">
+
+import { Vue, Watch } from "vue-property-decorator";
+import Component from "vue-class-component";
+import { Route } from "vue-router";
+import Nav from "../src/components/Nav.vue";
+
+
+@Component({
+  components: {
+    Nav
+  }
+})
+
+export default class App extends Vue {
+  private isShowNav: boolean = false;
+
+  mounted(): void {
+    
+  }
+
+  @Watch("$route")
+  routeChange(val: Route, oldVal: Route): void{
+    // const referrer: any = document.getElementById("referrer");
+    if(val.path === "/") {
+      this.isShowNav = false;
+    }else {
+      this.isShowNav = true;
     }
   }
 }
+</script>
+
+<style lang="scss" scoped>
+
+@import url("../src/sass/reset.scss");
+
+
 </style>
+
+
+
