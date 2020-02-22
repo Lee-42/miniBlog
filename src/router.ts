@@ -1,13 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-// import TryOne from "./components/tryVueComponent/TryOne.vue";
-// import TryTwo from "./components/tryVueComponent/TryTwo.vue";
 
 
 Vue.use(Router);
 
 export default new Router({
+  mode:'history',
   routes: [
     {
       path: "/",
@@ -21,18 +20,16 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      // component: () =>
-      //   import( "./views/Articles.vue")
+      component: () =>
+        import( "./views/Articles.vue")
     },
-    // {
-    //   path:'/tryOne',
-    //   name:"tryOne",
-    //   component: TryOne
-    // },
-    // {
-    //   path:'/tryTwo',
-    //   name:"tryTwo",
-    //   component: TryTwo
-    // }
+    {
+      path: "/articleDetail",
+      name: "articleDetail",
+      component: () => {
+        import("./views/ArticleDetail.vue");
+      }
+    }
+
   ]
 });
