@@ -21,3 +21,11 @@ export default class LoadingCustom extends Vue {
         padding: 30px;
     }
 </style>
+
+<style lang="scss" scope>
+    .loading {
+        width: 100%;
+    }
+</style>
+
+

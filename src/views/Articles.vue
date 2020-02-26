@@ -94,6 +94,7 @@ export default class Article extends Vue {
     private isLoading: boolean = false;
     private articlesList: Array<object> = [];
     private total: number = 0;
+    private tag_name: string = decodeURI(getQueryStringByName("tag_name"));
     private params: ArticlesParams = {
         keyword: "",
         likes: "", //是否是热门文章
@@ -120,6 +121,15 @@ export default class Article extends Vue {
         }
     }
 
+    @Watch("$route")
+    routeChange(val: Route, oldVal: Route): void{
+        this.tag_name = decodeURI(getQueryStringByName("tag_name"));
+        this.params.tag_id = getQueryStringByName("tag_id");
+        this.params.category_id = getQueryStringByName("category_id");
+        this.articlesList = [];
+        this.params.pageNum = 1;
+        this.handleSearch();
+    }
 
     private async handleSearch(): Promise<void>{
         this.isLoading = true;
@@ -149,9 +159,9 @@ export default class Article extends Vue {
         console.log(`id/articleDetail?article_id=${id}`);
         let url: string = "";
         if(process.env.NODE_ENV === "development"){
-            url = "http://127.0.0.1:3001/articleDetail?";
+            url = `http://127.0.0.1:3001/articleDetail?`;
         }else {
-            url = "http://xxx.xxx.xxx/articleDetail?";
+            url = `http://xxx.xxx.xxx/articleDetail?`;
         }
         window.open(url + `article_id=${id}`);
     }

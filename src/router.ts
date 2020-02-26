@@ -26,10 +26,8 @@ export default new Router({
     {
       path: "/articleDetail",
       name: "articleDetail",
-      component: () => {
-        import("./views/ArticleDetail.vue");
-      }
+      component: () => 
+        import("./views/ArticleDetail.vue")
     }
-
   ]
 });
