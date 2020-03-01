@@ -12,6 +12,12 @@ export interface ToUser {
     type: number;
 }
 
+export interface Params {
+    keyword: string;
+    pageNum: number;
+    pageSize: number;
+}
+
 
 //登录
 export interface UserInfo {
@@ -125,4 +131,70 @@ export interface List {
 export interface ArticlesData {
     count: number;
     list: List | any;
+}
+
+
+// 文章归档
+export interface ParamsArchive {
+    keyword: string;
+    likes: string;  //是否是热门文章
+    state: number;  // 文章发布状态 => 0草稿  1已发布  ''代表所有文章
+    article: number;
+    tag_id: string;
+    category_id: string;
+    pageNum: number;
+    pageSize: number;
+}
+
+export interface ArchiveListItem {
+    create_time: string;
+    title: string;
+    _id: string;
+}
+
+export interface ArchiveList {
+    year: string;
+    list: ArchiveListItem[];
+}
+
+export interface ArchiveData {
+    count: number;
+    list: ArchiveList | any;
+}
+
+
+// 项目
+export interface ProjectList {
+    content: string;
+    end_time: string;
+    img: string;
+    start_time: string;
+    title: string;
+    url: string;
+    _id: string;
+}
+
+export interface ProjectsData {
+    count: number;
+    list: ProjectList | any;
+}
+
+
+
+// 留言
+export interface MessageParams {
+    email: string;
+    phone: string;
+    name: string;
+    content: string;
+}
+export interface RulesItem {
+    validator: Function;
+    trigger: string;
+}
+export interface Rules {
+    email: RulesItem[];
+    phone: RulesItem[];
+    name: RulesItem[];
+    content: RulesItem[];
 }

@@ -4,7 +4,6 @@
     <Nav v-if="isShowNav"></Nav>
     <div class="layout">
       <router-view />
-
     </div>
     <Footer v-show="isShowNav"></Footer>
   </div>
@@ -37,10 +36,10 @@ export default class App extends Vue {
     const referrer: any = document.getElementById("referrer");
     if(val.path === "/") {
       this.isShowNav = false;
-      referrer.setAttribute("content", "always");
+      // referrer.setAttribute("content", "always");
     }else {
       this.isShowNav = true;
-      referrer.setAttribute("content", "never");
+      // referrer.setAttribute("content", "never");
     }
   }
 }

@@ -20,6 +20,9 @@ import {
   Message,
   DropdownMenu,
   DropdownItem,
+  Timeline,
+  TimelineItem,
+  Card,
 } from "element-ui";
 
 
@@ -36,6 +39,9 @@ Vue.component(Form.name, Form);
 Vue.component(FormItem.name, FormItem);
 Vue.component(Dialog.name, Dialog);
 Vue.component(Input.name, Input);
+Vue.component(Timeline.name, Timeline);
+Vue.component(TimelineItem.name, TimelineItem);
+Vue.component(Card.name, Card);
 
 Vue.prototype.$message = Message
 Vue.config.productionTip = false;

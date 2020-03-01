@@ -18,9 +18,9 @@
                                  class="el-menu-demo"
                                  mode="horizontal"
                                  @select="handleSelect">
-                            <el-menu-item :route="l.path"
+                            <el-menu-item v-for="l in list"
+                                          :route="l.path"
                                           :index="l.index"
-                                          v-for="l in list"
                                           :key="l.index">
                                 {{l.name}}
                             </el-menu-item>
@@ -176,16 +176,11 @@ export default class Nav extends Vue{
         },
         {
             index: "5",
-            path: "/timeline",
-            name: "历程"
-        },
-        {
-            index: "6",
             path: "/message",
             name: "留言"
         },
         {
-            index: "7",
+            index: "6",
             path: "/about",
             name: "关于"
         },
